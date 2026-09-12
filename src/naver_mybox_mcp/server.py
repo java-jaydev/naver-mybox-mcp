@@ -48,8 +48,12 @@ def _fail(error: MyboxError) -> dict[str, Any]:
 
 
 def _slim(resource: dict[str, Any]) -> dict[str, Any]:
-    """Keep the fields an agent actually reasons about; drop the rest."""
-    return {
+    """Keep the fields an agent actually reasons about; drop the rest.
+
+    Listing entries carry ``type`` ("file" or "folder"); search hits do not carry it at all,
+    but do carry ``path``/``parentPath``. Measured against the live API on 2026-09-12.
+    """
+    slim = {
         "resourceId": resource.get("resourceId"),
         "name": resource.get("name"),
         "type": resource.get("type"),
@@ -58,7 +62,9 @@ def _slim(resource: dict[str, Any]) -> dict[str, Any]:
         "modifiedAt": resource.get("modifiedAt"),
         "createdAt": resource.get("createdAt"),
         "parentId": resource.get("parentId"),
+        "parentPath": resource.get("parentPath"),
     }
+    return {k: v for k, v in slim.items() if v is not None}
 
 
 @server.tool()
