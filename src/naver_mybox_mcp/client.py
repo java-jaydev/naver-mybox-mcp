@@ -57,7 +57,7 @@ def read_token(explicit: str | None = None) -> str:
     """
     token = (explicit or os.environ.get(TOKEN_ENV, "")).strip()
     if not token and TOKEN_FILE.exists():
-        token = TOKEN_FILE.read_text(encoding="utf-8").strip()
+        token = TOKEN_FILE.read_text(encoding="utf-8-sig").strip()
     if not token:
         raise MyboxError(
             "No MYBOX personal access token. Create one in the MYBOX web UI under "
