@@ -94,6 +94,23 @@ results, and fetch in batches if the set is large.
 - **Encrypted folders and folders shared with you are not exposed by the API** — they exist
   only in the web and mobile apps. An empty listing does not mean an empty drive.
 
+## Related projects
+
+The MYBOX API opened on 2026-08-10 and tooling appeared quickly. NAVER publishes no MCP
+server or SDK of its own, and as of 2026-09-12 no MYBOX server is listed in the official MCP
+registry. Community work that exists:
+
+| Project | What it is |
+|---|---|
+| [minking/mybox-mcp](https://github.com/minking/mybox-mcp) | MCP server in TypeScript covering all 20 endpoints, including delete and trash |
+| [oliverne/myboxctl](https://github.com/oliverne/myboxctl) | CLI for file operations (`@oliverne/myboxctl` on npm) |
+| [overworks/php-mybox](https://github.com/overworks/php-mybox) | PHP SDK, plus a Go CLI and a Flysystem adapter by the same author |
+| [chiwanpark/mybox-s3](https://github.com/chiwanpark/mybox-s3) | S3-compatible API in front of MYBOX |
+
+This one is Python, exposes a deliberately smaller surface (no delete), paces itself under the
+documented rate limits, and ships tests that need neither a token nor the network. Pick whichever
+fits; if you want every endpoint including destructive ones, the TypeScript server above has them.
+
 ## Development
 
 ```bash
