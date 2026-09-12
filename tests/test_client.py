@@ -12,7 +12,7 @@ import json
 import httpx
 import pytest
 
-from mybox_mcp.client import MyboxClient, MyboxError
+from naver_mybox_mcp.client import MyboxClient, MyboxError
 
 TOKEN = "mbx_pat_test"
 
@@ -165,6 +165,6 @@ async def test_api_error_carries_code_and_request_id():
 
 async def test_missing_token_is_explained(monkeypatch, tmp_path):
     monkeypatch.delenv("MYBOX_PAT", raising=False)
-    monkeypatch.setattr("mybox_mcp.client.TOKEN_FILE", tmp_path / "nope")
+    monkeypatch.setattr("naver_mybox_mcp.client.TOKEN_FILE", tmp_path / "nope")
     with pytest.raises(MyboxError, match="personal access token"):
         MyboxClient()

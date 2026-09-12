@@ -3,18 +3,27 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mybox-mcp"
+name = "naver-mybox-mcp"
 version = "0.1.0"
-description = "MCP server for the NAVER MYBOX Open API - list, search, download and upload files"
+description = "MCP server for NAVER MYBOX (네이버 마이박스) - list, search, download and upload your cloud files"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "java-jaydev" }]
-keywords = ["mcp", "model-context-protocol", "naver", "mybox", "cloud-storage"]
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "naver",
+    "mybox",
+    "naver-mybox",
+    "cloud-storage",
+    "korea",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Natural Language :: Korean",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -29,15 +38,15 @@ dependencies = [
 dev = ["pytest>=8", "pytest-asyncio>=0.23"]
 
 [project.scripts]
-mybox-mcp = "mybox_mcp.server:main"
+naver-mybox-mcp = "naver_mybox_mcp.server:main"
 
 [project.urls]
-Homepage = "https://github.com/java-jaydev/mybox-mcp"
-Issues = "https://github.com/java-jaydev/mybox-mcp/issues"
+Homepage = "https://github.com/java-jaydev/naver-mybox-mcp"
+Issues = "https://github.com/java-jaydev/naver-mybox-mcp/issues"
 "MYBOX Open API" = "https://developers.mybox.naver.com/"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/mybox_mcp"]
+packages = ["src/naver_mybox_mcp"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

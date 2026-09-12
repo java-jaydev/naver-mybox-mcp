@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.java-jaydev/naver-mybox-mcp",
+  "title": "NAVER MYBOX",
+  "description": "List, search, download and upload files in a NAVER MYBOX (네이버 마이박스) cloud drive.",
+  "repository": {
+    "url": "https://github.com/java-jaydev/naver-mybox-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "naver-mybox-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "MYBOX_PAT",
+          "description": "MYBOX personal access token, created in the MYBOX web UI under Settings > account and personal access token management. Falls back to ~/.mybox/token when unset.",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

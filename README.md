@@ -1,9 +1,11 @@
-# mybox-mcp
+# naver-mybox-mcp
 
-An MCP server for the **NAVER MYBOX Open API** — list, search, download and upload files in
-a MYBOX drive from any MCP client (Claude Code, Claude Desktop, and others).
+<!-- mcp-name: io.github.java-jaydev/naver-mybox-mcp -->
 
-MYBOX opened a public API in 2026 ([developers.mybox.naver.com](https://developers.mybox.naver.com/)).
+An MCP server for **NAVER MYBOX** (네이버 마이박스) — list, search, download and upload files in
+your MYBOX cloud drive from any MCP client (Claude Code, Claude Desktop, and others).
+
+MYBOX opened a public API in August 2026 ([developers.mybox.naver.com](https://developers.mybox.naver.com/)).
 This wraps it as tools. Unofficial, not affiliated with NAVER.
 
 ## Why
@@ -17,7 +19,7 @@ working folder in one step.
 Requires Python 3.10+.
 
 ```bash
-pip install mybox-mcp
+pip install naver-mybox-mcp
 ```
 
 ## Get a token
@@ -28,8 +30,9 @@ Authentication is a **personal access token**, not OAuth.
 2. Settings → *account and personal access token management* → **create token**.
 3. Copy it immediately — it is shown once.
 
-Up to five tokens per account; each lasts 30, 60, 90 or 180 days. Anyone holding the token
-can reach the whole drive, so treat it as a password and never commit it.
+Up to five tokens per account; each lasts 30, 60, 90 or 180 days, and MYBOX emails you 7 days
+and 1 day before expiry. Anyone holding the token can reach the whole drive, so treat it as a
+password and never commit it.
 
 Provide it as the `MYBOX_PAT` environment variable, or put it on one line in `~/.mybox/token`.
 
@@ -39,14 +42,14 @@ Provide it as the `MYBOX_PAT` environment variable, or put it on one line in `~/
 {
   "mcpServers": {
     "mybox": {
-      "command": "mybox-mcp",
+      "command": "naver-mybox-mcp",
       "env": { "MYBOX_PAT": "mbx_pat_..." }
     }
   }
 }
 ```
 
-In Claude Code: `claude mcp add mybox --env MYBOX_PAT=mbx_pat_... -- mybox-mcp`
+In Claude Code: `claude mcp add mybox --env MYBOX_PAT=mbx_pat_... -- naver-mybox-mcp`
 
 ## Tools
 
@@ -70,7 +73,7 @@ different risk, and the web UI is right there. Open an issue if you need them be
 
 The docs publish per-plan limits and warn that bursts or abuse may be blocked **without prior
 notice**, so the client paces itself below the lowest documented per-minute limits (9/min for
-search, 55/min otherwise).
+search, 55/min otherwise). Free accounts can use the API; the plan only changes the limits.
 
 | Plan | Downloads | Search | Other APIs |
 |---|---|---|---|
@@ -97,8 +100,7 @@ results, and fetch in batches if the set is large.
 ## Related projects
 
 The MYBOX API opened on 2026-08-10 and tooling appeared quickly. NAVER publishes no MCP
-server or SDK of its own, and as of 2026-09-12 no MYBOX server is listed in the official MCP
-registry. Community work that exists:
+server or SDK of its own, and its launch post does not mention MCP. Community work that exists:
 
 | Project | What it is |
 |---|---|
@@ -119,6 +121,9 @@ pytest
 ```
 
 Tests run against `httpx.MockTransport`; no token or network needed.
+
+Releases are published from GitHub Actions on a GitHub release: PyPI via Trusted Publishing
+(no stored token) and the MCP registry via GitHub OIDC.
 
 ## License
 

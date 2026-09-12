@@ -2,7 +2,7 @@
 
 Run it over stdio::
 
-    MYBOX_PAT=mbx_pat_... python -m mybox_mcp
+    MYBOX_PAT=mbx_pat_... python -m naver_mybox_mcp
 
 Every tool needs a personal access token, taken from the ``MYBOX_PAT`` environment
 variable or ``~/.mybox/token``. Nothing here deletes anything: delete, trash listing,
@@ -19,10 +19,10 @@ from mcp.server.mcpserver import MCPServer
 from .client import CATEGORIES, MyboxClient, MyboxError
 
 server: MCPServer = MCPServer(
-    name="mybox",
+    name="naver-mybox",
     title="NAVER MYBOX",
     version="0.1.0",
-    website_url="https://github.com/java-jaydev/mybox-mcp",
+    website_url="https://github.com/java-jaydev/naver-mybox-mcp",
     instructions=(
         "Read and write files in a NAVER MYBOX drive. Search accepts a keyword, a category "
         "or a date range (at least one is required). Downloads and uploads move real bytes "
